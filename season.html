@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Season Details</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Episodes</h1>
+    <div id="episodes-list"></div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const showId = urlParams.get('showId');
+        const seasonNumber = urlParams.get('season');
+
+        fetch('/data/shows.json')
+            .then(response => response.json())
+            .then(data => {
+                const show = data.find(s => s.id === showId);
+                const season = show.seasons.find(s => s.number == seasonNumber);
+                let episodesHtml = <h2>${show.name} - Season ${season.number}</h2>;
+                
+                season.episodes.forEach(episode => {
+                    episodesHtml += `<div class="episode">
+                        <h3><a href="episode.html?showId=${show.id}&season=${season.number}&episode=${episode.number}">${episode.title}</a></h3>
+                    </div>`;
+                });
+                document.getElementById("episodes-list").innerHTML = episodesHtml;
+            });
+    </script>
+</body>
+</html>

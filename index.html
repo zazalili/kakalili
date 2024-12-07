@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Shows</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>TV Shows</h1>
+    <div id="shows-list"></div>
+
+    <script>
+        fetch('/data/shows.json')
+            .then(response => response.json())
+            .then(data => {
+                let showsHtml = '';
+                data.forEach(show => {
+                    showsHtml += `<div class="show">
+                        <img src="${show.thumbnail}" alt="${show.name}">
+                        <h2><a href="show.html?showId=${show.id}">${show.name}</a></h2>
+                    </div>`;
+                });
+                document.getElementById("shows-list").innerHTML = showsHtml;
+            });
+    </script>
+</body>
+</html>

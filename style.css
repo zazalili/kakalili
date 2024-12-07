@@ -1,0 +1,96 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2c2c2c; /* Dark gray background */
+    color: #fff; /* White text color for contrast */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header styles */
+h1, h2, h3 {
+    color: #f9a825; /* Fire orange color */
+}
+
+h1 {
+    font-size: 3rem;
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+/* Show & season listing styles */
+#shows-list, #seasons-list, #episodes-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+.show, .season, .episode {
+    background-color: #ffcc80; /* Light orange for boxes */
+    border-radius: 10px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adding subtle shadow for depth */
+}
+
+.show img, .season img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.show h2, .season h3, .episode h3 {
+    color: #f9a825; /* Fire orange color for titles */
+    margin-top: 10px;
+}
+
+.show a, .season a, .episode a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.show a:hover, .season a:hover, .episode a:hover {
+    color: #ff7043; /* Lighter orange on hover */
+}
+
+/* Video player styles */
+#video-player {
+    width: 100%;
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: #424242; /* Gray background for the player */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .show, .season, .episode {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+}

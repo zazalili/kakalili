@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode Stream</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Watch Episode</h1>
+    <div id="video-player"></div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const showId = urlParams.get('showId');
+        const seasonNumber = urlParams.get('season');
+        const episodeNumber = urlParams.get('episode');
+
+        fetch('/data/shows.json')
+            .then(response => response.json())
+            .then(data => {
+                const show = data.find(s => s.id === showId);
+                const season = show.seasons.find(s => s.number == seasonNumber);
+                const episode = season.episodes.find(e => e.number == episodeNumber);
+                
+                // Replace this with a player URL from Dood or Stream Something
+                const playerUrl = episode.streamUrl;  // Example: "https://dood.ws/episode-url"
+
+                document.getElementById("video-player").innerHTML = <iframe src="${playerUrl}" width="100%" height="500px" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>;
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Streaming Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Password Protection -->
+    <script>
+        const password = "yourPassword"; // Replace this with your password
+        const passwordPrompt = prompt("Enter the password to access the site:");
+
+        if (passwordPrompt !== password) {
+            alert("Incorrect password.");
+            window.location.href = "https://google.com"; // Redirect to another page if password is incorrect
+        } else {
+            console.log("Password correct. Access granted.");
+        }
+    </script>
+
+    <!-- Search Bar -->
+    <input type="text" id="search-bar" placeholder="Search for shows..." style="margin: 20px; padding: 10px; font-size: 1rem;">
+
+    <!-- Shows List -->
+    <div id="shows-list"></div>
+
+    <!-- Seasons List (will show on show click) -->
+    <div id="seasons-list"></div>
+
+    <!-- Episodes List (will show on season click) -->
+    <div id="episodes-list"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
